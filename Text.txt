@@ -1,0 +1,51 @@
+{$CLEO}
+0000: 
+
+:Start
+while true
+wait 250
+    if and
+        0256:   player $PLAYER_CHAR defined 
+        010F:   player $PLAYER_CHAR wanted_level > 5 
+    then 
+break
+    end
+end
+03CF: load_wav 'COL4_9' as 1
+038B: load_requested_models 
+0006: 4@ = 0 // integer values 
+
+while true
+wait 0
+0054: store_player $PLAYER_CHAR position_to 0@ 1@ 2@
+    if
+        05EF: 3@ = random_actor_near_point 0@ 1@ 2@ in_radius 40.0 find_next 0 pass_deads 1 //IF and SET
+    then
+        repeat
+            if and
+                02F2:   actor 3@ model == #ARMY
+                0184:   actor 3@ health >= 101
+                02CB:   actor 3@ bounding_sphere_visible 
+            then
+            00BC: text_highpriority 'fxt_001' 3000 ms 1  
+            03D1: play_wav 1
+            0006: 4@ = 1 // integer values
+                repeat
+                wait 0
+                until 03D2:   wav 1 ended 
+                040D: unload_wav 1
+        break 
+            end
+        until 85EF:   not   3@ = random_actor_near_point 0@ 1@ 2@ in_radius 40.0 find_next 1 pass_deads 1 //IF and SET  
+    end
+            if
+                0039:   4@ == 1 // integer values 
+            then
+break
+            end
+end
+
+repeat
+wait 0
+until 810F:   not   player $PLAYER_CHAR wanted_level > 5 
+jump @Start

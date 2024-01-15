@@ -1,0 +1,18 @@
+{$CLEO .cs} //directive to compile a CLEO script
+
+0000: NOP //to avoid a jump-at-zro-offset bug
+
+:label1
+0001: wait 0 ms 
+0247: request_model #RHINO 
+0002: jump @label2 
+
+:label2
+00D6: if 
+0248:   model #RHINO available 
+004D: jump_if_false @label1 
+0002: jump @label3
+
+:label3
+00A5: 0@ = create_car #RHINO at -1485.325 -339.4336 14.8679 
+004E: end_thread 

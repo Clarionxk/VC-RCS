@@ -1,0 +1,49 @@
+{$CLEO .cs} //directive to compile a CLEO script
+
+0000: NOP //to avoid a jump-at-zro-offset bug
+
+:label1
+0001: wait 0 ms                      
+0247: request_model #army 
+0002: jump @label2 
+
+:label2
+00D6: if 
+0248:   model #army available 
+004D: jump_if_false @label1 
+0002: jump @label3
+
+:label3 
+$ARMY1 = Actor.Create(Gang2, #ARMY, -1703.249, -326.1454, 20.7458)
+02AB: set_actor $ARMY1 immunities 1 1 1 1 1 
+01B2: give_actor $ARMY1 weapon 32 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $ARMY1 weapon_accuracy_to 100 
+$ARMY2 = Actor.Create(Gang2, #ARMY, -1700.7939, -307.8322, 20.7806)
+02AB: set_actor $ARMY2 immunities 1 1 1 1 1 
+01B2: give_actor $ARMY2 weapon 32 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $ARMY2 weapon_accuracy_to 100 
+$ARMY3 = Actor.Create(Gang2, #ARMY, -1688.6893, -311.7394, 14.8684)
+02AB: set_actor $ARMY3 immunities 1 1 1 1 1 
+01B2: give_actor $ARMY3 weapon 32 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $ARMY3 weapon_accuracy_to 100 
+$ARMY4 = Actor.Create(Gang2, #ARMY, -1689.885, -327.4727, 14.8683)
+02AB: set_actor $ARMY4 immunities 1 1 1 1 1 
+01B2: give_actor $ARMY4 weapon 33 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $ARMY4 weapon_accuracy_to 100
+$ARMY5 = Actor.Create(Gang2, #ARMY, -1742.5088, -271.3128, 14.8683)
+02AB: set_actor $ARMY5 immunities 1 1 1 1 1 
+01B2: give_actor $ARMY5 weapon 20 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $ARMY5 weapon_accuracy_to 100
+$ARMY6 = Actor.Create(Gang2, #ARMY, -1716.2172, -321.1488, 14.6989)
+02AB: set_actor $ARMY6 immunities 1 1 1 1 1 
+01B2: give_actor $ARMY6 weapon 19 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $ARMY6 weapon_accuracy_to 100
+$ARMY7 = Actor.Create(Gang2, #ARMY, -1718.9974, -273.441, 14.8683)
+02AB: set_actor $ARMY7 immunities 1 1 1 1 1 
+01B2: give_actor $ARMY7 weapon 20 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $ARMY7 weapon_accuracy_to 100
+$ARMY8 = Actor.Create(Gang2, #ARMY, -1648.4281, -321.1433, 14.6986)
+02AB: set_actor $ARMY8 immunities 1 1 1 1 1 
+01B2: give_actor $ARMY8 weapon 20 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $ARMY8 weapon_accuracy_to 100
+004E: end_thread

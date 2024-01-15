@@ -1,0 +1,33 @@
+{$CLEO .cs} //directive to compile a CLEO script
+
+0000: NOP //to avoid a jump-at-zro-offset bug
+
+:label1
+0001: wait 0 ms                      
+0247: request_model #PGA
+0002: jump @label2 
+
+:label2
+00D6: if 
+0248:   model #PGA available 
+004D: jump_if_false @label1 
+0002: jump @label3
+
+:label3 
+$PGA1 = Actor.Create(Gang2, #PGA, -1468.0024, -323.4333, 14.8681)
+02AB: set_actor $PGA1 immunities 1 1 1 1 1 
+01B2: give_actor $PGA1 weapon 32 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $PGA1 weapon_accuracy_to 100 
+$PGA2 = Actor.Create(Gang2, #PGA, -1479.1147, -309.9681, 14.8682)
+02AB: set_actor $PGA2 immunities 1 1 1 1 1 
+01B2: give_actor $PGA2 weapon 32 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $PGA2 weapon_accuracy_to 100 
+$PGA3 = Actor.Create(Gang2, #PGA, -1477.4387, -322.0853, 14.6984)
+02AB: set_actor $PGA3 immunities 1 1 1 1 1 
+01B2: give_actor $PGA3 weapon 32 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $PGA3 weapon_accuracy_to 100
+$PGA4 = Actor.Create(Gang2, #PGA, -1487.0444, -310.1152, 14.8682)
+02AB: set_actor $PGA4 immunities 1 1 1 1 1 
+01B2: give_actor $PGA4 weapon 32 ammo 9999 // Load the weapon model before using this 
+02E2: set_actor $PGA4 weapon_accuracy_to 100
+004E: end_thread
