@@ -1,0 +1,1 @@
+# Memory should not exceed 2048 MB or there will be fatal error
